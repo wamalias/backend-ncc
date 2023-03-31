@@ -9,6 +9,11 @@ const db = [
         origin: "Disitu lah pokoknya",
         role: "newbie"
     },
+    {
+        name: "Jono",
+        origin: "Luar angkasa",
+        role: "Alien"
+    },
 ];
 
 app.use(express.json());
@@ -23,6 +28,7 @@ app.post("/", (req, res) => {
     const {name, origin, role} = req.body;
     if(!name || !origin || !role){
         res.status(400).json({message: "Name, Origin, and Role must be filled!"});
+        return;
     }
     db.push({name, origin, role});
     res.status(201).json({message: "Data sucessfully added"});
